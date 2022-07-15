@@ -1,6 +1,8 @@
-import time
+import time,os
 from flask import Flask, render_template,request, redirect
 import pymongo
+
+
 win10 = 0
 mt = False
 android = 0
