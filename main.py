@@ -27,4 +27,5 @@ def favicon():
   return redirect("https://media.discordapp.net/attachments/858972718611562496/900698598612803584/A.png")
 
 
-app.run(host='0.0.0.0', port=8080,debug = True)
+if __name__ == '__main__':
+  app.run(debug=True)
