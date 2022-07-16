@@ -16,7 +16,17 @@ app = Flask(  # Create a flask app
 	__name__,
 	template_folder='templates',  # Name of html file folder
 	static_folder='static'  # Name of directory for static files
-) 
+)
+@app.route('/vote', methods=['GET','POST'])
+def vote():
+	if request.method == 'GET':
+		if request.args.get('id') == None:
+			return redirect('/')
+		else:
+			id = request.args.get('id')
+			if votedata.find_one({'id':id}) == None:
+				return redirect('/')
+			return render_template('vote.html',id=id)
 
 @app.route('/')
 def index():
@@ -24,11 +34,9 @@ def index():
 	resp.headers['Refresh'] = '6; url=https://www.youtube.com/watch?v=dQw4w9WgXcQ'
 	return resp
 
-
 @app.route("/favicon.ico")
 def favicon():
   return redirect("https://media.discordapp.net/attachments/858972718611562496/900698598612803584/A.png")
-
 
 if __name__ == '__main__':
   app.run(debug=True)
