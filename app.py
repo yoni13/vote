@@ -1,6 +1,7 @@
 import time,os
-from flask import Flask, render_template,request, redirect
+from flask import Flask, render_template,request, redirect,make_response
 import pymongo
+
 client = pymongo.MongoClient(os.environ['MONGO_URL'])
 votedb = client['votedata']
 votedata = votedb['votedatainformation']
@@ -17,7 +18,11 @@ app = Flask(  # Create a flask app
 	static_folder='static'  # Name of directory for static files
 ) 
 
-
+@app.route('/')
+def index():
+	resp = make_response(render_template('index.html'))
+	resp.headers['Refresh'] = '6; url=https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+	return resp
 
 
 @app.route("/favicon.ico")
