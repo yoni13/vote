@@ -1,7 +1,6 @@
 import time,os
 from flask import Flask, render_template,request, redirect
 import pymongo
-
 client = pymongo.MongoClient(os.environ['MONGO_URL'])
 votedb = client['votedata']
 votedata = votedb['votedatainformation']
