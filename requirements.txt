@@ -2,4 +2,3 @@ flask
 pymongo
 pymongo[srv]
 gunicorn
-decouple

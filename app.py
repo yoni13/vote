@@ -1,9 +1,8 @@
 import time,os
 from flask import Flask, render_template,request, redirect
 import pymongo
-from decouple import config
 
-client = pymongo.MongoClient(config('MONGO_URL'))
+client = pymongo.MongoClient(os.environ['MONGO_URL'])
 votedb = client['votedata']
 votedata = votedb['votedatainformation']
 #test db
