@@ -1,16 +1,14 @@
 import time,os
 from flask import Flask, render_template,request, redirect
 import pymongo
+from decouple import config
 
+client = pymongo.MongoClient(config('MONGO_URL'))
+votedb = client['votedata']
+votedata = votedb['votedatainformation']
+#test db
+#votedata.insert_one({'name':'test','votes':0})
 
-win10 = 0
-mt = False
-android = 0
-phnum = 0
-linuxnum = 0
-iphonenum = 0
-testpass = 123
-w =0
 str = 'Mozilla/5.0 (Linux; Android'
 iphonestr = 'Mozilla/5.0 (iPhone'
 linuxstr ='Mozilla/5.0 (Linux'
@@ -20,6 +18,8 @@ app = Flask(  # Create a flask app
 	template_folder='templates',  # Name of html file folder
 	static_folder='static'  # Name of directory for static files
 ) 
+
+
 
 
 @app.route("/favicon.ico")
