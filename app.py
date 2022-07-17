@@ -2,9 +2,11 @@ import time,os
 from flask import Flask, render_template,request, redirect,make_response
 import pymongo
 
+
+
 client = pymongo.MongoClient(os.environ['MONGO_URL'])
-votedb = client['votedata']
-votedata = votedb['votedatainformation']
+votedb = client['vote']
+votedata = votedb['votedata']
 #test db
 #votedata.insert_one({'name':'test','votes':0})
 
@@ -26,7 +28,7 @@ def vote():
 			id = request.args.get('id')
 			if votedata.find_one({'id':id}) == None:
 				return redirect('/')
-			return render_template('vote.html',id=id)
+			return render_template('vote.html')
 
 @app.route('/')
 def index():

@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+QLD+Beginner&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100&display=swap');
+html{
+    font-family: 'Edu QLD Beginner', cursive,'Noto Sans TC', sans-serif;
+    background-color: black;
+    color: white;
+}
